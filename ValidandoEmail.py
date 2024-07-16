@@ -1,18 +1,19 @@
 import re
 
-def fun(s):
-    pattern = r'^[\w|\-]+@[A-Za-z0-9]+\.[A-Za-z]{1,3}$'
-    return re.search(pattern, s) != None
+def funcao(s):
+    padrao = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    #Padrão regex simples e mais eficaz do e-mail.
+    return re.search(padrao, s) != None
 
-def filter_mail(emails):
-    return list(filter(fun, emails))
+def filtro(emails):
+    return list(filter(funcao, emails))
 
 if __name__ == '__main__':
-    n = int(input("Enter a number of emails you want to check:"))
+    n = int(input("Insira a quantidade de email que você deseja verificar:"))
     emails = []
     for _ in range(n):
         emails.append(input("Email:"))
 
-filtered_emails = filter_mail(emails)
-filtered_emails.sort()
-print(f"Valid emails: {filtered_emails}")
+emails_filtrados = filtro(emails)
+emails_filtrados.sort()
+print(f"Email válidos: {emails_filtrados}") 
